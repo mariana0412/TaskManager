@@ -4,17 +4,20 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Properties;
 
 public class TaskUI {
     private TaskList taskList;
     private final TaskStorage taskStorage;
-    private static final String FILE_PATH = "ui\\src\\main\\resources\\tasks.json";
+    private final String filePath;
     private boolean exitRequested = false;
 
-    public TaskUI() {
+    public TaskUI() throws IOException {
         taskStorage = new TaskStorage();
+        filePath = findFilePath();
+        System.out.println(filePath);
         try {
-            taskList = taskStorage.load(FILE_PATH);
+            taskList = taskStorage.load(filePath);
         } catch (IOException e) {
             taskList = new TaskList();
         }
@@ -34,7 +37,7 @@ public class TaskUI {
             else
                 System.out.println("Unknown command!");
         }
-        taskStorage.save(FILE_PATH, taskList);
+        taskStorage.save(filePath, taskList);
     }
 
     private String[] splitLine(String line) {
@@ -93,6 +96,12 @@ public class TaskUI {
 
     private void exitApplication() {
         exitRequested = true;
+    }
+
+    private static String findFilePath() throws IOException {
+        Properties properties = new Properties();
+        properties.load(TaskUI.class.getResourceAsStream("/config.properties"));
+        return properties.getProperty("resource.file");
     }
 }
 
