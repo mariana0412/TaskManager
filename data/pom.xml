@@ -31,4 +31,13 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>custom-name</id>
+            <build>
+                <finalName>Practice1-Data-${project.version}</finalName>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

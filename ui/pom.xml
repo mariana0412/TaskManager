@@ -62,4 +62,13 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>custom-name</id>
+            <build>
+                <finalName>Practice1-UI-${project.version}</finalName>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
