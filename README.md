@@ -16,7 +16,6 @@ The project consists of three modules:
 2. **Maven Dependencies**: Dependencies between the modules and with external libraries from Maven Central are managed using Maven.
 3. **Maven Copy Resources Plugin**: This plugin is used to copy resources between modules.
 4. **Maven Profile**: A Maven profile is used for project assembly.
-5. **Maven Archetype**: The project is setup using a Maven archetype.
 
 ## Setup :wrench:
 
